@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda Sencilla</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="light">
+  <header class="topbar">
+    <h1>Tienda Sencilla</h1>
+
+    <!-- Boton para alternar entre modo claro y oscuro -->
+    <button id="themeToggle" class="btn secondary" type="button" aria-label="Cambiar tema">
+      Modo Oscuro
+    </button>
+  </header>
+
+  <main class="layout">
+    <section>
+      <h2>Productos</h2>
+      <!-- Aqui se renderizan los productos desde JavaScript -->
+      <div id="productList" class="product-grid"></div>
+    </section>
+
+    <aside class="cart-panel">
+      <h2>Carrito</h2>
+
+      <!-- Lista de productos agregados al carrito -->
+      <ul id="cartItems" class="cart-list"></ul>
+
+      <p class="total">Total: <span id="totalAmount">$0.00</span></p>
+
+      <div class="actions">
+        <button id="clearCart" class="btn danger" type="button">Vaciar carrito</button>
+      </div>
+
+      <hr />
+
+      <h3>Pago</h3>
+      <!-- Formulario simple para validar pago antes de generar recibo -->
+      <form id="paymentForm" novalidate>
+        <label>
+          Nombre del titular
+          <input id="cardName" type="text" placeholder="Ej. Ana Perez" required />
+        </label>
+
+        <label>
+          Numero de tarjeta
+          <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required />
+        </label>
+
+        <label>
+          Fecha (MM/AA)
+          <input id="cardExpiry" type="text" maxlength="5" placeholder="08/29" required />
+        </label>
+
+        <label>
+          CVV
+          <input id="cardCvv" type="password" inputmode="numeric" maxlength="4" placeholder="123" required />
+        </label>
+
+        <button class="btn primary" type="submit">Validar pago</button>
+      </form>
+
+      <p id="paymentMessage" class="message" aria-live="polite"></p>
+
+      <button id="generatePdf" class="btn success" type="button" disabled>Generar recibo PDF</button>
+    </aside>
+  </main>
+
+  <!-- Libreria para crear PDF en el navegador -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvr4fR3rYhL7O4iRciMghvYDn8ApX2HFqRSbVSSMzdON3NofM8JrIoYNewc19hXtOD87mpy4V/mQJu1WDVYjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+</html>
