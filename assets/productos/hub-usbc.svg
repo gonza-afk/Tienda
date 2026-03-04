@@ -1,0 +1,14 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#1f2937'/>
+      <stop offset='100%' stop-color='#4b5563'/>
+    </linearGradient>
+  </defs>
+  <rect width='900' height='600' fill='url(#bg)'/>
+  <rect x='40' y='40' width='820' height='520' rx='24' fill='rgba(255,255,255,0.13)' stroke='rgba(255,255,255,0.5)'/>
+  <rect x='280' y='250' width='340' height='150' rx='20' fill='white'/>
+<rect x='320' y='292' width='44' height='40' rx='6' fill='#0f172a'/><rect x='376' y='292' width='44' height='40' rx='6' fill='#0f172a'/><rect x='432' y='292' width='44' height='40' rx='6' fill='#0f172a'/><rect x='488' y='292' width='44' height='40' rx='6' fill='#0f172a'/>
+<rect x='545' y='302' width='55' height='20' rx='8' fill='#0f172a'/>
+  <text x='450' y='532' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-size='42' font-weight='700'>Hub USB-C</text>
+</svg>

@@ -1,0 +1,13 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#7c3aed'/>
+      <stop offset='100%' stop-color='#a78bfa'/>
+    </linearGradient>
+  </defs>
+  <rect width='900' height='600' fill='url(#bg)'/>
+  <rect x='40' y='40' width='820' height='520' rx='24' fill='rgba(255,255,255,0.13)' stroke='rgba(255,255,255,0.5)'/>
+  <path d='M450 210 C530 210 580 270 580 340 C580 420 520 470 450 470 C380 470 320 420 320 340 C320 270 370 210 450 210 Z' fill='white'/>
+<line x1='450' y1='230' x2='450' y2='320' stroke='#0f172a' stroke-width='12'/>
+  <text x='450' y='532' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-size='42' font-weight='700'>Mouse Inalambrico</text>
+</svg>

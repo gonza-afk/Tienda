@@ -92,7 +92,15 @@
   </dialog>
 
   <!-- Libreria para generar PDF en navegador -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvr4fR3rYhL7O4iRciMghvYDn8ApX2HFqRSbVSSMzdON3NofM8JrIoYNewc19hXtOD87mpy4V/mQJu1WDVYjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    // Si el CDN principal falla, intentamos cargar jsPDF desde un CDN alterno.
+    if (!window.jspdf) {
+      const backupScript = document.createElement("script");
+      backupScript.src = "https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js";
+      document.head.appendChild(backupScript);
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
