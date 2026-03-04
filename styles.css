@@ -1,31 +1,29 @@
-/* Variables de color para modo claro por defecto */
 :root {
-  --bg: #f7f7f2;
-  --bg-soft: #ecebdd;
-  --text: #232320;
-  --muted: #5a5a53;
+  --bg: #f3f5f8;
+  --bg-soft: #e8edf4;
+  --text: #1a2433;
+  --muted: #5c6c82;
   --card: #ffffff;
-  --accent: #1f7a5d;
-  --accent-2: #145843;
-  --danger: #b32323;
-  --success: #227a39;
-  --border: #d8d6c8;
-  --shadow: 0 8px 24px rgba(20, 20, 15, 0.08);
+  --accent: #0f6c5e;
+  --accent-2: #0c4f45;
+  --danger: #b22234;
+  --success: #1f8f47;
+  --border: #d9e1ed;
+  --shadow: 0 16px 32px rgba(18, 28, 45, 0.1);
 }
 
-/* Variables para modo oscuro */
 body[data-theme="dark"] {
-  --bg: #1b1f1e;
-  --bg-soft: #252c2a;
-  --text: #ecece7;
-  --muted: #b9b9b1;
-  --card: #222825;
-  --accent: #43b68e;
-  --accent-2: #2c8f6d;
-  --danger: #d65656;
-  --success: #4fc371;
-  --border: #39403e;
-  --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  --bg: #111827;
+  --bg-soft: #1b2538;
+  --text: #eaf0ff;
+  --muted: #a8b4cb;
+  --card: #192132;
+  --accent: #28a58e;
+  --accent-2: #1f8875;
+  --danger: #d85a68;
+  --success: #41bf73;
+  --border: #2c3b55;
+  --shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -34,130 +32,181 @@ body[data-theme="dark"] {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: radial-gradient(circle at top, var(--bg-soft), var(--bg));
+  font-family: "Manrope", sans-serif;
   color: var(--text);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(34, 166, 153, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(91, 140, 255, 0.15), transparent 35%),
+    linear-gradient(160deg, var(--bg-soft), var(--bg));
   min-height: 100vh;
 }
 
 .topbar {
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card), transparent 6%);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--card);
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
-.topbar h1 {
+.brand h1 {
   margin: 0;
+  font-size: 1.5rem;
+}
+
+.brand-tag {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+}
+
+.top-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.currency-wrap {
+  display: grid;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 0.2rem;
+}
+
+select,
+input {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem;
+  background: transparent;
+  color: var(--text);
 }
 
 .layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
+  gap: 1.4rem;
   padding: 1.5rem;
 }
 
+.products-section,
+.cart-panel {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--card), transparent 4%);
+  box-shadow: var(--shadow);
+}
+
+.products-section {
+  padding: 1.1rem;
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+.section-head p {
+  margin-top: 0.35rem;
+  color: var(--muted);
+}
+
 .product-grid {
+  margin-top: 0.9rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1rem;
 }
 
 .product-card {
-  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 1rem;
-  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--card);
   display: grid;
-  gap: 0.75rem;
 }
 
-.product-card h3 {
+.product-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.product-body {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.product-name {
   margin: 0;
+  font-size: 1rem;
 }
 
 .price {
-  color: var(--muted);
-  font-weight: 700;
+  margin: 0;
+  font-weight: 800;
+  color: var(--accent);
 }
 
 .cart-panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
   padding: 1rem;
-  box-shadow: var(--shadow);
   height: fit-content;
 }
 
 .cart-list {
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 0 0 1rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   background: var(--bg-soft);
   border-radius: 10px;
-  padding: 0.55rem 0.65rem;
-  font-size: 0.95rem;
+  padding: 0.55rem;
 }
 
 .total {
-  font-size: 1.15rem;
-  font-weight: 700;
+  margin-top: 1rem;
+  font-size: 1.14rem;
+  font-weight: 800;
 }
 
 label {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.3rem;
   margin-bottom: 0.6rem;
-  font-size: 0.92rem;
-}
-
-input {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.6rem;
-  background: transparent;
-  color: var(--text);
-}
-
-input:focus {
-  outline: 2px solid color-mix(in srgb, var(--accent), #ffffff 45%);
-  border-color: var(--accent);
+  font-size: 0.9rem;
 }
 
 .actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 0.75rem 0;
 }
 
 .btn {
   border: 0;
   border-radius: 10px;
-  padding: 0.6rem 0.85rem;
-  cursor: pointer;
+  padding: 0.6rem 0.8rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .btn:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
-  opacity: 0.55;
 }
 
 .primary {
@@ -171,8 +220,8 @@ input:focus {
 
 .secondary {
   background: var(--bg-soft);
-  color: var(--text);
   border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .danger {
@@ -182,15 +231,13 @@ input:focus {
 
 .success {
   width: 100%;
-  margin-top: 0.8rem;
   background: var(--success);
   color: #fff;
 }
 
 .message {
-  min-height: 1.2rem;
-  margin: 0.45rem 0;
-  font-size: 0.92rem;
+  min-height: 1.25rem;
+  font-size: 0.9rem;
 }
 
 .message.error {
@@ -201,8 +248,43 @@ input:focus {
   color: var(--success);
 }
 
-@media (max-width: 900px) {
+.preview-modal {
+  width: min(90vw, 560px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: var(--card);
+  color: var(--text);
+}
+
+.preview-modal::backdrop {
+  background: rgba(4, 8, 16, 0.62);
+}
+
+.preview-modal img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close-preview {
+  float: right;
+  border: 0;
+  border-radius: 8px;
+  background: var(--bg-soft);
+  color: var(--text);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+@media (max-width: 950px) {
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
   }
 }

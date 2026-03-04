@@ -3,33 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda Sencilla</title>
+  <title>Tienda Web - Simulacion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-theme="light">
   <header class="topbar">
-    <h1>Tienda Sencilla</h1>
+    <div class="brand">
+      <p class="brand-tag">SIMULADOR E-COMMERCE</p>
+      <h1>Tienda Nova</h1>
+    </div>
 
-    <!-- Boton para alternar entre modo claro y oscuro -->
-    <button id="themeToggle" class="btn secondary" type="button" aria-label="Cambiar tema">
-      Modo Oscuro
-    </button>
+    <div class="top-controls">
+      <!-- Selector de moneda para mostrar precios en quetzales o dolares -->
+      <label class="currency-wrap" for="currencySelect">
+        Moneda
+        <select id="currencySelect">
+          <option value="GTQ">Quetzales (Q)</option>
+          <option value="USD">Dolares (USD)</option>
+        </select>
+      </label>
+
+      <!-- Boton para alternar tema claro/oscuro -->
+      <button id="themeToggle" class="btn secondary" type="button">Modo Oscuro</button>
+    </div>
   </header>
 
   <main class="layout">
-    <section>
-      <h2>Productos</h2>
-      <!-- Aqui se renderizan los productos desde JavaScript -->
+    <section class="products-section">
+      <div class="section-head">
+        <h2>Productos disponibles</h2>
+        <p>Selecciona productos, valida el pago y genera tu recibo.</p>
+      </div>
+
+      <!-- Grid de productos renderizado desde JavaScript -->
       <div id="productList" class="product-grid"></div>
     </section>
 
     <aside class="cart-panel">
       <h2>Carrito</h2>
-
-      <!-- Lista de productos agregados al carrito -->
       <ul id="cartItems" class="cart-list"></ul>
-
-      <p class="total">Total: <span id="totalAmount">$0.00</span></p>
+      <p class="total">Total: <span id="totalAmount">Q0.00</span></p>
 
       <div class="actions">
         <button id="clearCart" class="btn danger" type="button">Vaciar carrito</button>
@@ -37,8 +53,8 @@
 
       <hr />
 
-      <h3>Pago</h3>
-      <!-- Formulario simple para validar pago antes de generar recibo -->
+      <h3>Validacion de pago</h3>
+      <!-- Formulario de validacion local (simulacion) -->
       <form id="paymentForm" novalidate>
         <label>
           Nombre del titular
@@ -64,12 +80,18 @@
       </form>
 
       <p id="paymentMessage" class="message" aria-live="polite"></p>
-
       <button id="generatePdf" class="btn success" type="button" disabled>Generar recibo PDF</button>
     </aside>
   </main>
 
-  <!-- Libreria para crear PDF en el navegador -->
+  <!-- Modal para vista previa de imagen de producto -->
+  <dialog id="previewModal" class="preview-modal">
+    <button id="closePreview" class="close-preview" type="button" aria-label="Cerrar vista previa">X</button>
+    <img id="previewImage" src="" alt="Vista previa del producto" />
+    <h3 id="previewTitle"></h3>
+  </dialog>
+
+  <!-- Libreria para generar PDF en navegador -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvr4fR3rYhL7O4iRciMghvYDn8ApX2HFqRSbVSSMzdON3NofM8JrIoYNewc19hXtOD87mpy4V/mQJu1WDVYjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
 </body>
