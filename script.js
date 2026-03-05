@@ -5,24 +5,156 @@
 // 1) Render de productos y carrito.
 // 2) Cambio de moneda GTQ/USD.
 // 3) Validacion de pago de la simulacion.
-// 4) Vista previa de imagenes.
-// 5) Generacion de recibo PDF completo con respaldo local.
+// 4) Vista previa de imagenes con especificaciones.
+// 5) Generacion de recibo PDF con respaldo local.
 
 // Catalogo de productos.
 // NOTA: Los precios se guardan siempre en GTQ para evitar errores de conversion acumulada.
 const products = [
-  { id: 1, name: "Audifonos Bluetooth", priceGTQ: 320, image: "assets/productos/audifonos-bluetooth.svg" },
-  { id: 2, name: "Teclado Mecanico RGB", priceGTQ: 480, image: "assets/productos/teclado-mecanico-rgb.svg" },
-  { id: 3, name: "Mouse Inalambrico", priceGTQ: 195, image: "assets/productos/mouse-inalambrico.svg" },
-  { id: 4, name: "Monitor 24 pulgadas", priceGTQ: 1420, image: "assets/productos/monitor-24.svg" },
-  { id: 5, name: "Webcam Full HD", priceGTQ: 330, image: "assets/productos/webcam-full-hd.svg" },
-  { id: 6, name: "Memoria USB 128GB", priceGTQ: 140, image: "assets/productos/usb-128gb.svg" },
-  { id: 7, name: "Laptop 15 pulgadas", priceGTQ: 5890, image: "assets/productos/laptop-15.svg" },
-  { id: 8, name: "Silla Ergonomica", priceGTQ: 1290, image: "assets/productos/silla-ergonomica.svg" },
-  { id: 9, name: "Disco SSD 1TB", priceGTQ: 760, image: "assets/productos/ssd-1tb.svg" },
-  { id: 10, name: "Smartwatch", priceGTQ: 890, image: "assets/productos/smartwatch.svg" },
-  { id: 11, name: "Altavoz Portatil", priceGTQ: 275, image: "assets/productos/altavoz-portatil.svg" },
-  { id: 12, name: "Hub USB-C", priceGTQ: 220, image: "assets/productos/hub-usbc.svg" }
+  {
+    id: 1,
+    name: "Audifonos Bluetooth",
+    priceGTQ: 320,
+    image: "assets/productos/audifonos-bluetooth.svg",
+    specs: [
+      "Conexion Bluetooth 5.3",
+      "Autonomia aproximada de 20 horas",
+      "Microfono integrado para llamadas",
+      "Carga por puerto USB-C"
+    ]
+  },
+  {
+    id: 2,
+    name: "Teclado Mecanico RGB",
+    priceGTQ: 480,
+    image: "assets/productos/teclado-mecanico-rgb.svg",
+    specs: [
+      "Interruptores mecanicos tactiles",
+      "Retroiluminacion RGB configurable",
+      "Teclas anti-ghosting",
+      "Conexion USB"
+    ]
+  },
+  {
+    id: 3,
+    name: "Mouse Inalambrico",
+    priceGTQ: 195,
+    image: "assets/productos/mouse-inalambrico.svg",
+    specs: [
+      "Sensor optico de 1600 DPI",
+      "Conexion 2.4 GHz por receptor USB",
+      "Diseno ergonomico para mano derecha",
+      "Bateria recargable"
+    ]
+  },
+  {
+    id: 4,
+    name: "Monitor 24 pulgadas",
+    priceGTQ: 1420,
+    image: "assets/productos/monitor-24.svg",
+    specs: [
+      "Panel Full HD 1920x1080",
+      "Frecuencia de 75 Hz",
+      "Entradas HDMI y VGA",
+      "Modo cuidado visual"
+    ]
+  },
+  {
+    id: 5,
+    name: "Webcam Full HD",
+    priceGTQ: 330,
+    image: "assets/productos/webcam-full-hd.svg",
+    specs: [
+      "Resolucion 1080p",
+      "Microfono con reduccion de ruido",
+      "Enfoque automatico",
+      "Soporte para monitor incluido"
+    ]
+  },
+  {
+    id: 6,
+    name: "Memoria USB 128GB",
+    priceGTQ: 140,
+    image: "assets/productos/usb-128gb.svg",
+    specs: [
+      "Capacidad de 128 GB",
+      "Interfaz USB 3.0",
+      "Compatibilidad con Windows y macOS",
+      "Diseno compacto"
+    ]
+  },
+  {
+    id: 7,
+    name: "Laptop 15 pulgadas",
+    priceGTQ: 5890,
+    image: "assets/productos/laptop-15.svg",
+    specs: [
+      "Pantalla de 15.6 pulgadas",
+      "Memoria RAM de 16 GB",
+      "Almacenamiento SSD de 512 GB",
+      "Sistema operativo preinstalado"
+    ]
+  },
+  {
+    id: 8,
+    name: "Silla Ergonomica",
+    priceGTQ: 1290,
+    image: "assets/productos/silla-ergonomica.svg",
+    specs: [
+      "Soporte lumbar ajustable",
+      "Altura regulable",
+      "Respaldo reclinable",
+      "Base con ruedas de nylon"
+    ]
+  },
+  {
+    id: 9,
+    name: "Disco SSD 1TB",
+    priceGTQ: 760,
+    image: "assets/productos/ssd-1tb.svg",
+    specs: [
+      "Capacidad de 1 TB",
+      "Interfaz SATA III",
+      "Lectura secuencial hasta 550 MB/s",
+      "Resistente a golpes"
+    ]
+  },
+  {
+    id: 10,
+    name: "Smartwatch",
+    priceGTQ: 890,
+    image: "assets/productos/smartwatch.svg",
+    specs: [
+      "Pantalla tactil a color",
+      "Monitoreo de ritmo cardiaco",
+      "Resistencia al agua IP68",
+      "Notificaciones de llamadas y apps"
+    ]
+  },
+  {
+    id: 11,
+    name: "Altavoz Portatil",
+    priceGTQ: 275,
+    image: "assets/productos/altavoz-portatil.svg",
+    specs: [
+      "Conexion Bluetooth",
+      "Potencia de salida de 10 W",
+      "Bateria de hasta 12 horas",
+      "Modo manos libres"
+    ]
+  },
+  {
+    id: 12,
+    name: "Hub USB-C",
+    priceGTQ: 220,
+    image: "assets/productos/hub-usbc.svg",
+    specs: [
+      "4 puertos USB 3.0",
+      "Puerto HDMI 4K",
+      "Compatible con USB-C",
+      "Diseno en aluminio"
+    ]
+  }
 ];
 
 // Tipo de cambio para simulacion.
@@ -42,6 +174,7 @@ const currencySelect = document.getElementById("currencySelect");
 const previewModal = document.getElementById("previewModal");
 const previewImage = document.getElementById("previewImage");
 const previewTitle = document.getElementById("previewTitle");
+const previewSpecs = document.getElementById("previewSpecs");
 const closePreviewBtn = document.getElementById("closePreview");
 
 // Estado global de la interfaz.
@@ -346,6 +479,24 @@ function generateReceiptPdf() {
   paymentMessage.className = "message ok";
 }
 
+// Pinta en el modal la lista de especificaciones del producto seleccionado.
+function renderPreviewSpecs(specs) {
+  previewSpecs.innerHTML = "";
+
+  if (!Array.isArray(specs) || specs.length === 0) {
+    const item = document.createElement("li");
+    item.textContent = "No hay especificaciones registradas para este producto.";
+    previewSpecs.appendChild(item);
+    return;
+  }
+
+  specs.forEach((spec) => {
+    const item = document.createElement("li");
+    item.textContent = spec;
+    previewSpecs.appendChild(item);
+  });
+}
+
 // Abre el modal de vista previa para la imagen del producto seleccionado.
 function openPreview(productId) {
   const product = products.find((item) => item.id === productId);
@@ -354,6 +505,7 @@ function openPreview(productId) {
   previewImage.src = product.image;
   previewImage.alt = `Vista previa de ${product.name}`;
   previewTitle.textContent = product.name;
+  renderPreviewSpecs(product.specs);
 
   if (typeof previewModal.showModal === "function") {
     previewModal.showModal();
